@@ -35,14 +35,15 @@ public class ProductService {
 
     public String deleteProduct(int id){
         repository.deleteById(id);
-        return "product removed !! " + id;
+        return "producto eliminado !! " + id;
     }
 
-    public Product updateProduct(Product product){
+    public Product updateProduct(Product product) {
         Product existingProduct=repository.findById(product.getId()).orElse(null);
         existingProduct.setName(product.getName());
         existingProduct.setQuantity(product.getQuantity());
         existingProduct.setPrice(product.getPrice());
+        existingProduct.setNew(true);
         return repository.save(existingProduct);
 
     }

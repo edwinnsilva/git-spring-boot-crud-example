@@ -22,5 +22,6 @@ public class Product {
     private int id;
     private String name;
     private int quantity;
+    private boolean isNew;
     private double price;
 }
