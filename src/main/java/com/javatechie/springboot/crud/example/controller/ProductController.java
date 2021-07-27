@@ -1,11 +1,16 @@
 package com.javatechie.springboot.crud.example.controller;
 
+import com.javatechie.springboot.crud.example.dto.ProductDto;
 import com.javatechie.springboot.crud.example.entity.Product;
 import com.javatechie.springboot.crud.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.javatechie.springboot.crud.example.entity.Product.ProducttoDto;
 
 @RestController
 public class ProductController {
@@ -14,14 +19,21 @@ public class ProductController {
  private ProductService service;
 
  @PostMapping("/addProduct")
- public Product addProduct(@RequestBody Product product){
-    return service.saveProduct(product);
+ public Product addProduct(@RequestBody ProductDto productDto) throws Exception {
+    return service.saveProduct(ProducttoDto(productDto));
  }
 
+
  @PostMapping("/addProducts")
- public List<Product> addProducts(@RequestBody List<Product> products) {
+ public List<Product> addProducts(@RequestBody List<ProductDto> productsDto) throws Exception{
+  List<Product> products = new ArrayList<>(productsDto.size());
+//  for (Product product : products){
+//   products = ProducttoDto(productsDto);
+//     }
   return service.saveProducts(products);
  }
+
+
 
  @GetMapping("/products")
  public List<Product> findAllProducts(){
@@ -38,10 +50,14 @@ public class ProductController {
   return service.getProductByName(name);
  }
 
+
  @PutMapping("/update")
- public Product updateProduct(@RequestBody Product product){
+ public Product updateProduct(@RequestBody ProductDto productDto) throws Exception {
+  Product product = ProducttoDto(productDto);
+  product.setId(productDto.getId());
   return service.updateProduct(product);
  }
+
 
  @DeleteMapping("/delete/{id}")
  public String deletProduct(@PathVariable int id){

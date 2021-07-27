@@ -13,9 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
-    public Product saveProduct(Product product) {
-        return repository.save(product);
-    }
+    public Product saveProduct(Product product) { return repository.save(product); }
 
     public List<Product> saveProducts(List<Product> products) {
         return repository.saveAll(products);
@@ -42,9 +40,16 @@ public class ProductService {
         Product existingProduct=repository.findById(product.getId()).orElse(null);
         existingProduct.setName(product.getName());
         existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setStatus(product.getStatus());
         existingProduct.setPrice(product.getPrice());
-        existingProduct.setNew(true);
         return repository.save(existingProduct);
 
     }
+
+
+
+
 }
+
+
+
