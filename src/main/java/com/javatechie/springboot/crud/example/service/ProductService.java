@@ -43,13 +43,5 @@ public class ProductService {
         existingProduct.setStatus(product.getStatus());
         existingProduct.setPrice(product.getPrice());
         return repository.save(existingProduct);
-
     }
-
-
-
-
 }
-
-
-

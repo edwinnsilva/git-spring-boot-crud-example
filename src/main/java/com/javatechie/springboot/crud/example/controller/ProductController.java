@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.javatechie.springboot.crud.example.entity.Product.mapProductDtoToProduct;
+import static com.javatechie.springboot.crud.example.entity.ProductTransformer.mapProductDtoToProduct;
 
 @RestController
 public class ProductController {
