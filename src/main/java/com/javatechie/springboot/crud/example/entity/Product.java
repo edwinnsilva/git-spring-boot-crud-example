@@ -27,7 +27,7 @@ public class Product {
     private double price;
     private int categoria;
 
-    public static Product ProducttoDto(ProductDto productDto) throws Exception {
+    public static Product mapProductDtoToProduct(ProductDto productDto) throws Exception {
         Product product = new Product();
 
         product.setName(productDto.getName());
